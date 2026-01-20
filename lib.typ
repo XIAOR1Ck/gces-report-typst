@@ -11,6 +11,9 @@
 }
 
 
+#show: doc => style(doc)
+
+
 #let generate-report(
   info: (:),
   body,
@@ -27,7 +30,6 @@
     front-matter: (:)
   ) + info
 
-  show: doc => style(doc)
   set page(numbering: none)
   cover-page(
     document-type: info.document-type,
