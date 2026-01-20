@@ -1,7 +1,7 @@
-#import "frontpage.typ": front-page
-#import "coverpage.typ": cover-page
+#import "/layouts/frontpage.typ": front-page
+#import "/layouts/coverpage.typ": cover-page
 #import "Approval.typ": approval-certificate
-#import "style.typ": style
+#import "/layouts/style.typ": style
 
 #show: doc => style(doc)
 
@@ -15,14 +15,14 @@
   document-type: "Report",
   project-type: "Major",
   title: "BitMaatDaan",
-  students : ("Anim Malla", "Saksham Shrestha", "Suresh Acharya"),
+  students : ("Student 1", "Student 2", "Student 3"),
   logo: image("/assets/gces-logo.png", width: 30%),
   date: datetime.today(),
-  project-head: "Santosh Panth",
-  supervisor: "Ranjan Adhikari",
+  project-head: "Project Head name",
+  supervisor: "Supervisor name",
   front-matter: (:)
 ) = {
-
+  set page(numbering: none)
   cover-page(
     document-type: document-type,
     project-type: project-type,
@@ -41,7 +41,9 @@
     date: date,
     supervisor: supervisor
   )
-
+  // Start Page numbering From Start
+  counter(page).update(1)
+  //Set page numbering style to i,ii...
   set page(numbering: "i") 
   approval-certificate(
   title: title,
@@ -50,6 +52,14 @@
   project-head: project-head,
   date: date
   )
+  
+  // Iterate over front matters like Acknowledgement, Abstract. etc
+  for items in front-matter{
+    items
+}
+
+  //No Page Numbers For Table of contents, list of figures and tables
+  set page(numbering: none)
 
 
   outline(title: "Table Of Contents")
@@ -59,7 +69,9 @@
   outline(title: "List Of Figures", target: figure.where(kind: image))
   pagebreak()
 
+  //Heading Counter resets for the rest of the documents
   counter(heading).update(0)
+  // Page Counter resets to 1 for rest of the document
   counter(page).update(1)
 }
 
