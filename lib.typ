@@ -3,7 +3,6 @@
 #import "Approval.typ": approval-certificate
 #import "/layouts/style.typ": style
 
-#show: doc => style(doc)
 
 #let set-style(doc) = {
  return (
@@ -11,8 +10,10 @@
 )
 }
 
+
 #let generate-report(
-  info: (:),  
+  info: (:),
+  body,
 ) = {
   info = (
     document-type: "Report",
@@ -26,6 +27,7 @@
     front-matter: (:)
   ) + info
 
+  show: doc => style(doc)
   set page(numbering: none)
   cover-page(
     document-type: info.document-type,
@@ -78,6 +80,11 @@
   counter(heading).update(0)
   // Page Counter resets to 1 for rest of the document
   counter(page).update(1)
+  body
+  if info.bib != () {
+      pagebreak()
+      info.bib
+    }
 }
 
 

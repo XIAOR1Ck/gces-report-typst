@@ -3,6 +3,10 @@
 #import "fig.typ": _fig-num
 
 #let style(doc) = {
+  //Underlining for links
+  
+  show link: underline
+
   // Level 1 Heading formatting (Heading 1)
   set heading(numbering: "1.1.1")
   show heading.where(level: 1) : set heading(numbering: none)
@@ -23,6 +27,8 @@
   show heading.where(level: 2) : set text(size: 14pt)
 
   // Level 3 heading formatting(heading 3)
+  show heading.where(level: 3) : set text(size: 13pt)
+
   set page(
     paper: "a4",
     margin: (top: 1in, bottom: 1in, left: 1.5in, right: 1in)

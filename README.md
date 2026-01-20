@@ -73,11 +73,15 @@ This method is used to generate front matter components. It handles all the comp
   - **_Usage:_** `supervisor: "Supervisor Name"`
 - `front-matter` : This is a very important parameter. This is used to pass other components of the front matter like Abstract, Acknowledgement, etc. These are written in a seperate file of their own and passed as an array. Let's say you have two files `abstract.typ` and `ack.typ` for front matter.
   - **_Usage:_** `front-matter: ("Abstract.typ", "ack.typ")`
+  - `bib` : Pass a bibliography object to set up bibliography page and reference.
+    - **_Usage:_** First you'll have to create a bibliography object with `#let refs = bibliography("path-to-file.bib")`
+    - Then pass the object. `bib: refs`
+    - Then references in the `.bib` file can be called by `@tag`
 
   **_Calling the function will look like:_**
 
   ```typst
-  #generate-report(
+  #shiw: generate-report.with(
   info: (
   title: "BitMaatDaan",
   students: ("Anim Malla", "Saksham Shrestha", "Suresh Acharya"),
@@ -88,9 +92,6 @@ This method is used to generate front matter components. It handles all the comp
   front-matter: ("Abstract.typ", "ack.typ"),
   document-type: "Report",
   project-type: "Major",
+  bibs: refs
   ))
   ```
-
-```
-
-```
