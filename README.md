@@ -81,7 +81,7 @@ This method is used to generate front matter components. It handles all the comp
   **_Calling the function will look like:_**
 
   ```typst
-  #shiw: generate-report.with(
+  #show: generate-report.with(
   info: (
   title: "BitMaatDaan",
   students: ("Anim Malla", "Saksham Shrestha", "Suresh Acharya"),
