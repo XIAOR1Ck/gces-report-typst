@@ -3,7 +3,12 @@
 
 #show: doc => set-style(doc)
 
-#generate-report()
+#generate-report(
+  info : (front-matter:(
+  "Abstract.typ",
+  "ack.typ"
+))
+)
 
 //#set page(numbering: "1")
 = CHAPTER 1

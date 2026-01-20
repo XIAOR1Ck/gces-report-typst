@@ -12,50 +12,55 @@
 }
 
 #let generate-report(
-  document-type: "Report",
-  project-type: "Major",
-  title: "BitMaatDaan",
-  students : ("Student 1", "Student 2", "Student 3"),
-  logo: image("/assets/gces-logo.png", width: 30%),
-  date: datetime.today(),
-  project-head: "Project Head name",
-  supervisor: "Supervisor name",
-  front-matter: (:)
+  info: (:),  
 ) = {
+  info = (
+    document-type: "Report",
+    project-type: "Major",
+    title: "BitMaatDaan",
+    students : ("Student 1", "Student 2", "Student 3"),
+    logo: image("/assets/gces-logo.png", width: 30%),
+    date: datetime.today(),
+    project-head: "Project Head name",
+    supervisor: "Supervisor name",
+    front-matter: (:)
+  ) + info
+
   set page(numbering: none)
   cover-page(
-    document-type: document-type,
-    project-type: project-type,
-    title: title,
-    students: students,
-    logo: logo,
-    date: date
+    document-type: info.document-type,
+    project-type: info.project-type,
+    title: info.title,
+    students: info.students,
+    logo: info.logo,
+    date: info.date
   )
 
   front-page(
-    document-type: document-type,
-    project-type: project-type,
-    title: title,
-    students: students,
-    logo: logo,
-    date: date,
-    supervisor: supervisor
+    document-type: info.document-type,
+    project-type: info.project-type,
+    title: info.title,
+    students: info.students,
+    logo: info.logo,
+    date: info.date,
+    supervisor: info.supervisor
   )
   // Start Page numbering From Start
   counter(page).update(1)
   //Set page numbering style to i,ii...
   set page(numbering: "i") 
   approval-certificate(
-  title: title,
-  students: students,
-  supervisor: supervisor,
-  project-head: project-head,
-  date: date
+  title: info.title,
+  students: info.students,
+  supervisor: info.supervisor,
+  project-head: info.project-head,
+  date: info.date
   )
   
   // Iterate over front matters like Acknowledgement, Abstract. etc
-  for items in front-matter{
-    items
+  for items in info.front-matter{
+    include items
+    pagebreak()
 }
 
   //No Page Numbers For Table of contents, list of figures and tables
