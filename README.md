@@ -83,10 +83,9 @@ This method is used to generate front matter components. It handles all the comp
   ```typst
   #show: generate-report.with(
   info: (
-  title: "BitMaatDaan",
-  students: ("Anim Malla", "Saksham Shrestha", "Suresh Acharya"),
-  logo: image("gces-logo.png", width: 30%),
-  date: datetime.today(),
+  title: "GCES-College-Bus",
+  students: ("Somebody", "Nobody", "Mad"),
+  date: datetime(day: 20, month: 1, year: 2026),
   project-head: "Santosh Panth",
   supervisor: "Ranjan Adhikari",
   front-matter: ("Abstract.typ", "ack.typ"),
