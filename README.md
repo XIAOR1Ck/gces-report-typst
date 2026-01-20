@@ -17,20 +17,20 @@ This can be used this in two ways.
 - Install As a local package
 - Cloning the repo.
 
-**_Installation as a package_**
-To install this as a package follow _local packages_ section of [this guide](https://github.com/typst/packages)
+1. **_Installation as a package_**
+   To install this as a package follow _local packages_ section of [this guide](https://github.com/typst/packages)
 
 For this project the files will be at `{data-dir}/typst/packages/local/gces-report-typst/0.1.0/`
 
-**_Cloning the repo_**
-For this just clone the repo and edit `main.typ`
+2. **_Cloning the repo_**
+   For this just clone the repo and edit `main.typ`
 
 ## Usage
 
 - If you've cloned the repo the usage is fairly simple. You can just edit `main.typ`. All the required files are imported and called there.
 
 - If installed as a local package, you can import in any file as `#import "@local/gces-report-typst:0.1.0": *` or `#import "@local/gces-report-typst:0.1.0": generate-report, set-style`
-- Or for importing the whole folder structure
+- Or for importing the whole folder structure after installing as local package
 
 ```sh
 $ typst init @local/gces-report-typst:0.1.0 my-report
@@ -46,13 +46,13 @@ There are mainly 2 methods defined in the package.
 
 ### set-style
 
-This is used to set universam formatting specifications to the document. The formatting rules are defined in `style.typ` and this is a wrapper for that.
+This is used to set universal formatting specifications to the document. The formatting rules are defined in `style.typ` and this is a wrapper for that.
 
 - **_Usage:_** `#show: doc => set-style(doc)`
 
 ### generate-report
 
-This method is used to generate front matter components. It handles all the components upto the table of contents of the document(Until before the chapters)
+This method is used to generate front matter components. It handles all the components upto the table of contents of the document(Until before the chapters)<br>
 `generate-report` has method `info` which takes different parameters to set the document.
 
 - `document-type` : This is used to set they type of the document like _Proposal_ or _Report_.
@@ -77,21 +77,19 @@ This method is used to generate front matter components. It handles all the comp
   **_Calling the function will look like:_**
 
   ```typst
-
+  #generate-report(
+  info: (
+  title: "BitMaatDaan",
+  students: ("Anim Malla", "Saksham Shrestha", "Suresh Acharya"),
+  logo: image("gces-logo.png", width: 30%),
+  date: datetime.today(),
+  project-head: "Santosh Panth",
+  supervisor: "Ranjan Adhikari",
+  front-matter: ("Abstract.typ", "ack.typ"),
+  document-type: "Report",
+  project-type: "Major",
+  ))
   ```
-
-#generate-report(
-info: (
-title: "BitMaatDaan",
-students: ("Anim Malla", "Saksham Shrestha", "Suresh Acharya"),
-logo: image("gces-logo.png", width: 30%),
-date: datetime.today(),
-project-head: "Santosh Panth",
-supervisor: "Ranjan Adhikari",
-front-matter: ("Abstract.typ", "ack.typ"),
-document-type: "Report",
-project-type: "Major",
-))
 
 ```
 
