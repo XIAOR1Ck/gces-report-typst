@@ -2,6 +2,8 @@
 
 This is a typst template to write project reports and proposals for students of Gandaki College And Engineering And Science
 
+Check out the output pdf [here.](./assets/main.pdf)
+
 ## Features
 
 - follows GCES project Specifications
