@@ -1,0 +1,11 @@
+[package]
+name        = "gces-report-typst"
+version     = "0.1.0"
+entrypoint  = "lib.typ"
+authors     = ["be2022ce167@gces.edu.np"]
+license     = "GPL"
+description = "Typst template to create Project reports and proposals for the students at Gandaki College Of Engineering And Science(GCES) Lamachaur-16, Pokhara"
+
+[template]
+path = "."
+entrypoint = "main.typ"
